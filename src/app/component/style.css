@@ -1,0 +1,12 @@
+.truncated-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+}
+
+.card:hover .truncated-text {
+    white-space: normal;
+}

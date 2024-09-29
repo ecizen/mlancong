@@ -1,0 +1,31 @@
+body{
+    margin: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.back{
+    background-image: url('./Image/back.svg');
+    background-size: cover;
+    background-position: center;
+    
+}
+
+.card{
+    background-image: url('./Image/rekomendasi1.svg'); 
+
+}
+
+
+.card1{
+    background-image: url('./Image/rekomendasi2.svg');
+
+}
+.card2{
+    background-image: url('./Image/rekomendasi3.svg');
+
+}
+.card3{
+    background-image: url('./Image/rekomendasi5.svg');
+
+}

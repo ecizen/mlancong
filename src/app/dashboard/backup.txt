@@ -1,0 +1,78 @@
+<section className='back bg-white  h-max lg:h-screen  relative'>
+        <div className='bg-transparent '>
+          <Navbar />
+        </div>
+        <div className='lg:py-8 pt-8 px-8'>
+          <div className='flex flex-col items-center'>
+            <h1 className='text-7xl font-bold text-white'>Explore the vast world</h1>
+            <p className='text-sm text-white mt-4'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>          
+          </div>
+          <div className='flex justify-center lg:relative'>
+            <div className=''>
+              <Image src={images.Ilustrasi} className='lg:w-[600px] w-[400px]  ' alt='ilustrasi'/>
+            </div>
+          </div>
+          <div className='lg:block hidden'>
+            <Reservation />
+          </div>
+        </div>    
+          <button onClick={handleOpen} className={`${show ? 'hidden' : 'flex z-20 top-52'} bg-[#22AFA7] flex items-center font-bold lg:hidden w-[120px] h-12 left-0 rounded-r-full fixed text-white`}>
+            Reservation
+          </button>
+      </section>
+
+
+      'use client'
+
+import { useEffect, useState } from "react"
+import app from "./firebase"
+import { getAuth } from "firebase/auth"
+import { useRouter } from "next/navigation"
+import Dashboard from '@/app/dashboard/page'
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth"
+
+const Login = () => {
+  const [user, setUser] = useState(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    const auth = getAuth(app);
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user);  
+      } else {
+        setUser(null);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const signWithGoogle = async () =>{
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(auth, provider);
+      router.push('/dashboard');
+    } catch (error) {
+      console.error("Error signing in", error.message);      
+    }
+  };
+  
+  return(
+    <div className="flex flex-col items-center justify-center h-screen">
+      {user ? (
+        <Dashboard/>
+      ) : (
+        <button
+         onClick={signWithGoogle}
+         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4"
+         >
+            Sign With Google
+        </button>
+      )}
+    </div>
+  )
+}
+
+export default Login;
