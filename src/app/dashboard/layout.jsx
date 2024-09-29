@@ -1,5 +1,5 @@
 
-import Navbar from "../component/navbar/Navbar"
+
 
 export default function DashboardLayout({
     children, // will be a page or nested layout
@@ -7,8 +7,6 @@ export default function DashboardLayout({
     return (
         <div>
           <section>
-            
-              <Navbar />
                 {children}
           </section>
         </div>
