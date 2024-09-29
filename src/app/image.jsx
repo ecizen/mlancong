@@ -95,8 +95,6 @@ const images = {
     Cultural5,
     Cultural6,
     Discount1
-
- 
   
 }
 
