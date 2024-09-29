@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 
-import location from '../../Image/location.svg'
+import location from '../../Image/Location.svg'
 import Date from '../../Image/Date.svg'
 import person from '../../Image/person.svg'
 
